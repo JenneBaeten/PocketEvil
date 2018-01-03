@@ -1,5 +1,7 @@
 package be.ehb.jenne.pocketevil.model;
 
+import android.util.Log;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.lang.reflect.Method;
@@ -30,7 +32,9 @@ public class Profile {
     private double timePlayedCrusader;
     private double timePlayedDemonHunter;
     private double timePlayedMonk;
+    private double timePlayedNecromancer;
     private double timePlayedWitchDoctor;
+    private double timePlayedWizard;
     private boolean progressionAct1;
     private boolean progressionAct2;
     private boolean progressionAct3;
@@ -40,12 +44,15 @@ public class Profile {
     private Artisan blacksmith;
     private Artisan blacksmithHardcore;
     private Artisan blacksmithSeason;
+    private Artisan blacksmithSeasonHardcore;
     private Artisan jeweler;
     private Artisan jewelerHardcore;
     private Artisan jewelerSeason;
+    private Artisan jewelerSeasonHardcore;
     private Artisan mystic;
     private Artisan mysticHardcore;
     private Artisan mysticSeason;
+    private Artisan mysticSeasonHardcore;
     private List<ProfileSeasonal> profileSeasonal;
 
     public Profile() {
@@ -140,8 +147,8 @@ public class Profile {
         return heroes;
     }
 
-    public void setHeroes(ArrayList<Hero> heroes) {
-        heroes = heroes;
+    public void setHeroes(List<Hero> heroes) {
+        this.heroes = heroes;
     }
 
     public String getLastHeroPlayed() {
@@ -398,52 +405,95 @@ public class Profile {
                 ", profileSeasonal=" + profileSeasonal +
                 '}';
     }
-    public <T> void invokeSetter(T value, String propertyName){
-        Map<String, String> setterNames = new HashMap<String, String>();
-        setterNames.put("battleTag","");
-        setterNames.put("paragonLevel","");
-        setterNames.put("paragonLevelHardcore","");
-        setterNames.put("paragonLevelSeason","");
-        setterNames.put("paragonLevelSeasonHardcore","");
-        setterNames.put("heroes","");
-        setterNames.put("guildName","");
-        setterNames.put("lastHeroPlayed","");
-        setterNames.put("lastUpdated","");
-        setterNames.put("monsters","");
-        setterNames.put("elites","");
-        setterNames.put("hardcoreMonsters","");
-        setterNames.put("highestHardcoreLevel","");
-        // timePlayed
-        setterNames.put("barbarian","");
-        setterNames.put("crusader","");
-        setterNames.put("demon-hunter","");
-        setterNames.put("monk","");
-        setterNames.put("necromancer","");
-        setterNames.put("witch-doctor","");
-        setterNames.put("wizard","");
-        // progression
-        setterNames.put("act1","");
-        setterNames.put("act2","");
-        setterNames.put("act3","");
-        setterNames.put("act4","");
-        setterNames.put("act5","");
-        setterNames.put("fallenHeroes","");
-        // Artisans
-        setterNames.put("blacksmith","");
-        setterNames.put("jeweler","");
-        setterNames.put("mystic","");
-        setterNames.put("blacksmithHardcore","");
-        setterNames.put("jewelerHardcore","");
-        setterNames.put("mysticHardcore","");
-        setterNames.put("blacksmithSeason","");
-        setterNames.put("jewelerSeason","");
-        setterNames.put("mysticSeason","");
-        setterNames.put("blacksmithSeasonHardcore","");
-        setterNames.put("jewelerSeasonHardcore","");
-        setterNames.put("mysticSeasonHardcore","");
-        setterNames.put("profileSeasonal","");
-
-
+    public void stringSetter(String value, String propertyName){
+        switch(propertyName) {
+            case ("battleTag"):
+                this.battleTag = (String)value;
+                break;
+            case("guildName"):
+                this.guildName = value;
+                break;
+            case("lastHeroPlayed"):
+                this.lastHeroPlayed = value;
+                break;
+            case("lastUpdated"):
+                this.lastUpdated = value;
+                break;
+            default:
+                Log.d("ProfileSetter", "stringSetter: unsupported propertyname: " + propertyName);
+        }
+    }
+    public void numberSetter(double value, String propertyName){
+        switch(propertyName){
+            case ("paragonLevel"):
+                this.paragonLevel = (int)value;
+                break;
+            case("paragonLevelHardcore"):
+                this.paragonLevelHardcore = (int)value;
+                break;
+            case("paragonLevelSeason"):
+                this.paragonLevelSeason = (int)value;
+                break;
+            case("paragonLevelSeasonHardcore"):
+                this.paragonLevelSeasonHardcore = (int)value;
+                break;
+            case("monsters"):
+                this.killsMonsters = value;
+                break;
+            case("elites"):
+                this.killsElites = value;
+                break;
+            case("hardcoreMonsters"):
+                this.killsMonstersHardcore = value;
+                break;
+            case("highestHardcoreLevel"):
+                this.highestHardcoreLevel = (int)value;
+                break;
+            case("barbarian"):
+                this.timePlayedBarbarian = value;
+                break;
+            case("crusader"):
+                this.timePlayedCrusader = value;
+                break;
+            case("demon-hunter"):
+                this.timePlayedDemonHunter = value;
+                break;
+            case("monk"):
+                this.timePlayedMonk = value;
+                break;
+            case("necromancer"):
+                this.timePlayedNecromancer = value;
+                break;
+            case("witch-doctor"):
+                this.timePlayedWitchDoctor = value;
+                break;
+            case("wizard"):
+                this.timePlayedWizard = value;
+                break;
+            default:
+                Log.d("ProfileSetter", "numberSetter: unsupported propertyname: " + propertyName);
+        }
+    }
+    public void boolSetter(boolean value, String propertyName) {
+        switch (propertyName) {
+            case ("act1"):
+                this.progressionAct1 = value;
+                break;
+            case ("act2"):
+                this.progressionAct2 = value;
+                break;
+            case ("act3"):
+                this.progressionAct3 = value;
+                break;
+            case ("act4"):
+                this.progressionAct4 = value;
+                break;
+            case ("act5"):
+                this.progressionAct5 = value;
+                break;
+            default:
+                Log.d("ProfileSetter", "invokeSetter: unsupported propertyname: " + propertyName);
+        }
     }
 }
 

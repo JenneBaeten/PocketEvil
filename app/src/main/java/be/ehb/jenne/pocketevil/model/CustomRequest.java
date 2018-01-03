@@ -14,10 +14,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -62,7 +65,8 @@ public class CustomRequest<T> extends Request<T> {
             String json = new String(
                     response.data,
                     HttpHeaderParser.parseCharset(response.headers));
-            parseProfileRequest(json);
+            Profile profile = parseProfileRequest(json);
+            Log.i("TEST5", profile.toString());
             return Response.success(
                     gson.fromJson(json, clazz),
                     HttpHeaderParser.parseCacheHeaders(response));
@@ -76,9 +80,23 @@ public class CustomRequest<T> extends Request<T> {
     }
     private Profile parseProfileRequest(String json){
         Profile profile = new Profile();
+        Artisan blacksmith = new Artisan();
+        Artisan blacksmithHardcore = new Artisan();
+        Artisan blacksmithSeasonal = new Artisan();
+        Artisan blacksmithSeasonalHarcore = new Artisan();
+        Artisan jeweler = new Artisan();
+        Artisan jewelerHardcore = new Artisan();
+        Artisan jewelerSeasonal = new Artisan();
+        Artisan jewelerSeasonalHardcore = new Artisan();
+        Artisan mystic = new Artisan();
+        Artisan mysticHardcore = new Artisan();
+        Artisan mysticSeasonal = new Artisan();
+        Artisan mysticSeasonalHardcore = new Artisan();
+        List<ProfileSeasonal> profileSeasonal = new ArrayList<>();
         StringReader stringReader = new StringReader(json);
         JsonReader jsonReader = new JsonReader(stringReader);
         boolean documentClosed = false;
+        Hero heroHelper;
 
         String propertyName = "";
         Log.d("Debug Parsing", "parseProfileRequest: ");
@@ -110,6 +128,56 @@ public class CustomRequest<T> extends Request<T> {
                     case NAME:
                         propertyName = jsonReader.nextName();
                         Log.d("Debug Parsing", "parseProfileRequest: Name: " + propertyName);
+                        //region Heroes
+                        if(propertyName.equals("heroes")){
+                            jsonReader.beginArray();
+                            List<Hero> heroList = new ArrayList<>();
+                            profile.setHeroes(heroList);
+                            while(jsonReader.peek() != JsonToken.END_ARRAY){
+                                Hero helperHero = new Hero();
+                                jsonReader.beginObject();
+                                // id
+                                jsonReader.nextName();
+                                helperHero.setId(jsonReader.nextString());
+                                // name
+                                jsonReader.nextName();
+                                helperHero.setName(jsonReader.nextString());
+                                // class
+                                jsonReader.nextName();
+                                helperHero.setHeroClass(HeroClass.get(jsonReader.nextString()));
+                                // gender
+                                jsonReader.nextName();
+                                helperHero.setGender(jsonReader.nextInt());
+                                // level
+                                jsonReader.nextName();
+                                helperHero.setLevel(jsonReader.nextInt());
+                                // elite kills
+                                jsonReader.nextName();
+                                jsonReader.beginObject();
+                                jsonReader.nextName();
+                                helperHero.setEliteKills(jsonReader.nextDouble());
+                                jsonReader.endObject();
+                                // paragonlevel
+                                jsonReader.nextName();
+                                helperHero.setParagonLevel(jsonReader.nextInt());
+                                // hardcore
+                                jsonReader.nextName();
+                                helperHero.setHardcore(jsonReader.nextBoolean());
+                                // seasonal
+                                jsonReader.nextName();
+                                helperHero.setSeasonal(jsonReader.nextBoolean());
+                                // dead
+                                jsonReader.nextName();
+                                helperHero.setDead(jsonReader.nextBoolean());
+                                // last updated
+                                jsonReader.nextName();
+                                helperHero.setLastUpdated(jsonReader.nextString());
+
+                                jsonReader.endObject();
+                                profile.getHeroes().add(helperHero);
+                            }
+                        }
+                        //endregion
                         break;
                     case NULL:
                         Log.d("Debug Parsing", "parseProfileRequest: Null");
@@ -117,13 +185,19 @@ public class CustomRequest<T> extends Request<T> {
                         break;
                     case NUMBER:
                         // I parse everything as a double as there is no way of distinguishing the type of the next number
-                        Log.d("Debug Parsing", "parseProfileRequest: Number " + propertyName + " Value: " + jsonReader.nextDouble());
+                        double numberHelper = jsonReader.nextDouble();
+                        Log.d("Debug Parsing", "parseProfileRequest: Number " + propertyName + " Value: " + numberHelper);
+                        profile.numberSetter(numberHelper, propertyName);
                         break;
                     case STRING:
-                        Log.d("Debug Parsing", "parseProfileRequest: String " + propertyName + " Value: " + jsonReader.nextString());
+                        String stringHelper = jsonReader.nextString();
+                        Log.d("Debug Parsing", "parseProfileRequest: String " + propertyName + " Value: " + stringHelper);
+                        profile.stringSetter(stringHelper, propertyName);
                         break;
                     case BOOLEAN:
-                        Log.d("Debug Parsing", "parseProfileRequest: Boolean " + propertyName + " Value: " + jsonReader.nextBoolean());
+                        boolean boolHelper = jsonReader.nextBoolean();
+                        Log.d("Debug Parsing", "parseProfileRequest: Boolean " + propertyName + " Value: " + boolHelper);
+                        profile.boolSetter(boolHelper, propertyName);
                         break;
                 }
             } catch (IOException e) {
