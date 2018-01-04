@@ -16,7 +16,9 @@ class ProfileSeasonal {
     private double timePlayedCrusader;
     private double timePlayedDemonHunter;
     private double timePlayedMonk;
+    private double timePlayedNecromancer;
     private double timePlayedWitchDoctor;
+    private double timePlayedWizard;
     private boolean progressionAct1;
     private boolean progressionAct2;
     private boolean progressionAct3;
@@ -111,12 +113,28 @@ class ProfileSeasonal {
         this.timePlayedMonk = timePlayedMonk;
     }
 
+    public double getTimePlayedNecromancer() {
+        return timePlayedNecromancer;
+    }
+
+    public void setTimePlayedNecromancer(double timePlayedNecromancer) {
+        this.timePlayedNecromancer = timePlayedNecromancer;
+    }
+
     public double getTimePlayedWitchDoctor() {
         return timePlayedWitchDoctor;
     }
 
     public void setTimePlayedWitchDoctor(double timePlayedWitchDoctor) {
         this.timePlayedWitchDoctor = timePlayedWitchDoctor;
+    }
+
+    public double getTimePlayedWizard() {
+        return timePlayedWizard;
+    }
+
+    public void setTimePlayedWizard(double timePlayedWizard) {
+        this.timePlayedWizard = timePlayedWizard;
     }
 
     public boolean isProgressionAct1() {
@@ -157,28 +175,5 @@ class ProfileSeasonal {
 
     public void setProgressionAct5(boolean progressionAct5) {
         this.progressionAct5 = progressionAct5;
-    }
-
-    @Override
-    public String toString() {
-        return "ProfileSeasonal{" +
-                "id='" + id + '\'' +
-                ", paragonLevel=" + paragonLevel +
-                ", paragonLevelHardcore=" + paragonLevelHardcore +
-                ", killsMonsters=" + killsMonsters +
-                ", killsElites=" + killsElites +
-                ", killsMonstersHardcore=" + killsMonstersHardcore +
-                ", highestHardcoreLevel=" + highestHardcoreLevel +
-                ", timePlayedBarbarian=" + timePlayedBarbarian +
-                ", timePlayedCrusader=" + timePlayedCrusader +
-                ", timePlayedDemonHunter=" + timePlayedDemonHunter +
-                ", timePlayedMonk=" + timePlayedMonk +
-                ", timePlayedWitchDoctor=" + timePlayedWitchDoctor +
-                ", progressionAct1=" + progressionAct1 +
-                ", progressionAct2=" + progressionAct2 +
-                ", progressionAct3=" + progressionAct3 +
-                ", progressionAct4=" + progressionAct4 +
-                ", progressionAct5=" + progressionAct5 +
-                '}';
     }
 }

@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         });
         VolleySingleton.getInstance(this).addToRequestQueue(customRequest);
 
-        Log.d("RemoveMe", "removeme ");
     }
 
 }

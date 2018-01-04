@@ -58,43 +58,6 @@ public class Profile {
     public Profile() {
     }
 
-    public Profile(String battleTag, int paragonLevel, int paragonLevelHardcore, int paragonLevelSeason, int paragonLevelSeasonHardcore, String guildName, ArrayList<Hero> heroes, String lastHeroPlayed, String lastUpdated, double killsMonsters, double killsElites, double killsMonstersHardcore, int highestHardcoreLevel, double timePlayedBarbarian, double timePlayedCrusader, double timePlayedDemonHunter, double timePlayedMonk, double timePlayedWitchDoctor, boolean progressionAct1, boolean progressionAct2, boolean progressionAct3, boolean progressionAct4, boolean progressionAct5, ArrayList<Hero> fallenHeroes, Artisan blacksmith, Artisan blacksmithHardcore, Artisan blacksmithSeason, Artisan jeweler, Artisan jewelerHardcore, Artisan jewelerSeason, Artisan mystic, Artisan mysticHardcore, Artisan mysticSeason, ArrayList<ProfileSeasonal> profileSeasonal) {
-        this.battleTag = battleTag;
-        this.paragonLevel = paragonLevel;
-        this.paragonLevelHardcore = paragonLevelHardcore;
-        this.paragonLevelSeason = paragonLevelSeason;
-        this.paragonLevelSeasonHardcore = paragonLevelSeasonHardcore;
-        this.guildName = guildName;
-        heroes = heroes;
-        this.lastHeroPlayed = lastHeroPlayed;
-        this.lastUpdated = lastUpdated;
-        this.killsMonsters = killsMonsters;
-        this.killsElites = killsElites;
-        this.killsMonstersHardcore = killsMonstersHardcore;
-        this.highestHardcoreLevel = highestHardcoreLevel;
-        this.timePlayedBarbarian = timePlayedBarbarian;
-        this.timePlayedCrusader = timePlayedCrusader;
-        this.timePlayedDemonHunter = timePlayedDemonHunter;
-        this.timePlayedMonk = timePlayedMonk;
-        this.timePlayedWitchDoctor = timePlayedWitchDoctor;
-        this.progressionAct1 = progressionAct1;
-        this.progressionAct2 = progressionAct2;
-        this.progressionAct3 = progressionAct3;
-        this.progressionAct4 = progressionAct4;
-        this.progressionAct5 = progressionAct5;
-        this.fallenHeroes = fallenHeroes;
-        this.blacksmith = blacksmith;
-        this.blacksmithHardcore = blacksmithHardcore;
-        this.blacksmithSeason = blacksmithSeason;
-        this.jeweler = jeweler;
-        this.jewelerHardcore = jewelerHardcore;
-        this.jewelerSeason = jewelerSeason;
-        this.mystic = mystic;
-        this.mysticHardcore = mysticHardcore;
-        this.mysticSeason = mysticSeason;
-        this.profileSeasonal = profileSeasonal;
-    }
-
     public String getBattleTag() {
         return battleTag;
     }
@@ -231,12 +194,28 @@ public class Profile {
         this.timePlayedMonk = timePlayedMonk;
     }
 
+    public double getTimePlayedNecromancer() {
+        return timePlayedNecromancer;
+    }
+
+    public void setTimePlayedNecromancer(double timePlayedNecromancer) {
+        this.timePlayedNecromancer = timePlayedNecromancer;
+    }
+
     public double getTimePlayedWitchDoctor() {
         return timePlayedWitchDoctor;
     }
 
     public void setTimePlayedWitchDoctor(double timePlayedWitchDoctor) {
         this.timePlayedWitchDoctor = timePlayedWitchDoctor;
+    }
+
+    public double getTimePlayedWizard() {
+        return timePlayedWizard;
+    }
+
+    public void setTimePlayedWizard(double timePlayedWizard) {
+        this.timePlayedWizard = timePlayedWizard;
     }
 
     public boolean isProgressionAct1() {
@@ -283,7 +262,7 @@ public class Profile {
         return fallenHeroes;
     }
 
-    public void setFallenHeroes(ArrayList<Hero> fallenHeroes) {
+    public void setFallenHeroes(List<Hero> fallenHeroes) {
         this.fallenHeroes = fallenHeroes;
     }
 
@@ -311,6 +290,14 @@ public class Profile {
         this.blacksmithSeason = blacksmithSeason;
     }
 
+    public Artisan getBlacksmithSeasonHardcore() {
+        return blacksmithSeasonHardcore;
+    }
+
+    public void setBlacksmithSeasonHardcore(Artisan blacksmithSeasonHardcore) {
+        this.blacksmithSeasonHardcore = blacksmithSeasonHardcore;
+    }
+
     public Artisan getJeweler() {
         return jeweler;
     }
@@ -333,6 +320,14 @@ public class Profile {
 
     public void setJewelerSeason(Artisan jewelerSeason) {
         this.jewelerSeason = jewelerSeason;
+    }
+
+    public Artisan getJewelerSeasonHardcore() {
+        return jewelerSeasonHardcore;
+    }
+
+    public void setJewelerSeasonHardcore(Artisan jewelerSeasonHardcore) {
+        this.jewelerSeasonHardcore = jewelerSeasonHardcore;
     }
 
     public Artisan getMystic() {
@@ -359,6 +354,14 @@ public class Profile {
         this.mysticSeason = mysticSeason;
     }
 
+    public Artisan getMysticSeasonHardcore() {
+        return mysticSeasonHardcore;
+    }
+
+    public void setMysticSeasonHardcore(Artisan mysticSeasonHardcore) {
+        this.mysticSeasonHardcore = mysticSeasonHardcore;
+    }
+
     public List<ProfileSeasonal> getProfileSeasonal() {
         return profileSeasonal;
     }
@@ -367,44 +370,6 @@ public class Profile {
         this.profileSeasonal = profileSeasonal;
     }
 
-    @Override
-    public String toString() {
-        return "Profile{" +
-                "battleTag='" + battleTag + '\'' +
-                ", paragonLevel=" + paragonLevel +
-                ", paragonLevelHardcore=" + paragonLevelHardcore +
-                ", paragonLevelSeason=" + paragonLevelSeason +
-                ", paragonLevelSeasonHardcore=" + paragonLevelSeasonHardcore +
-                ", guildName='" + guildName + '\'' +
-                ", Heroes=" + heroes +
-                ", lastHeroPlayed='" + lastHeroPlayed + '\'' +
-                ", lastUpdated='" + lastUpdated + '\'' +
-                ", killsMonsters=" + killsMonsters +
-                ", killsElites=" + killsElites +
-                ", killsMonstersHardcore=" + killsMonstersHardcore +
-                ", highestHardcoreLevel=" + highestHardcoreLevel +
-                ", timePlayedBarbarian=" + timePlayedBarbarian +
-                ", timePlayedCrusader=" + timePlayedCrusader +
-                ", timePlayedDemonHunter=" + timePlayedDemonHunter +
-                ", timePlayedMonk=" + timePlayedMonk +
-                ", timePlayedWitchDoctor=" + timePlayedWitchDoctor +
-                ", progressionAct1=" + progressionAct1 +
-                ", progressionAct2=" + progressionAct2 +
-                ", progressionAct3=" + progressionAct3 +
-                ", progressionAct4=" + progressionAct4 +
-                ", progressionAct5=" + progressionAct5 +
-                ", blacksmith=" + blacksmith +
-                ", blacksmithHardcore=" + blacksmithHardcore +
-                ", blacksmithSeason=" + blacksmithSeason +
-                ", jeweler=" + jeweler +
-                ", jewelerHardcore=" + jewelerHardcore +
-                ", jewelerSeason=" + jewelerSeason +
-                ", mystic=" + mystic +
-                ", mysticHardcore=" + mysticHardcore +
-                ", mysticSeason=" + mysticSeason +
-                ", profileSeasonal=" + profileSeasonal +
-                '}';
-    }
     public void stringSetter(String value, String propertyName){
         switch(propertyName) {
             case ("battleTag"):
@@ -412,12 +377,6 @@ public class Profile {
                 break;
             case("guildName"):
                 this.guildName = value;
-                break;
-            case("lastHeroPlayed"):
-                this.lastHeroPlayed = value;
-                break;
-            case("lastUpdated"):
-                this.lastUpdated = value;
                 break;
             default:
                 Log.d("ProfileSetter", "stringSetter: unsupported propertyname: " + propertyName);
@@ -469,6 +428,14 @@ public class Profile {
                 break;
             case("wizard"):
                 this.timePlayedWizard = value;
+                break;
+            case("lastHeroPlayed"):
+                Integer valLastHeroPlayed = (int)value;
+                this.lastHeroPlayed = valLastHeroPlayed.toString();
+                break;
+            case("lastUpdated"):
+                Integer valLastUpdated = (int)value;
+                this.lastUpdated = valLastUpdated.toString();
                 break;
             default:
                 Log.d("ProfileSetter", "numberSetter: unsupported propertyname: " + propertyName);

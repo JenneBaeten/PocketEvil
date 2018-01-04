@@ -80,24 +80,9 @@ public class CustomRequest<T> extends Request<T> {
     }
     private Profile parseProfileRequest(String json){
         Profile profile = new Profile();
-        Artisan blacksmith = new Artisan();
-        Artisan blacksmithHardcore = new Artisan();
-        Artisan blacksmithSeasonal = new Artisan();
-        Artisan blacksmithSeasonalHarcore = new Artisan();
-        Artisan jeweler = new Artisan();
-        Artisan jewelerHardcore = new Artisan();
-        Artisan jewelerSeasonal = new Artisan();
-        Artisan jewelerSeasonalHardcore = new Artisan();
-        Artisan mystic = new Artisan();
-        Artisan mysticHardcore = new Artisan();
-        Artisan mysticSeasonal = new Artisan();
-        Artisan mysticSeasonalHardcore = new Artisan();
-        List<ProfileSeasonal> profileSeasonal = new ArrayList<>();
         StringReader stringReader = new StringReader(json);
         JsonReader jsonReader = new JsonReader(stringReader);
         boolean documentClosed = false;
-        Hero heroHelper;
-
         String propertyName = "";
         Log.d("Debug Parsing", "parseProfileRequest: ");
         while(!documentClosed){
@@ -176,6 +161,155 @@ public class CustomRequest<T> extends Request<T> {
                                 jsonReader.endObject();
                                 profile.getHeroes().add(helperHero);
                             }
+                        }
+                        //endregion
+                        //region Artisans
+                        if(propertyName.equals("blacksmith") || propertyName.equals("blacksmithHardcore") || propertyName.equals("blacksmithSeason") || propertyName.equals("blacksmithSeasonHardcore") ||
+                                propertyName.equals("jeweler") || propertyName.equals("jewelerHardcore") || propertyName.equals("jewelerSeason") || propertyName.equals("jewelerSeasonHardcore") ||
+                                propertyName.equals("mystic") || propertyName.equals("mysticHardcore") || propertyName.equals("mysticSeason") || propertyName.equals("mysticSeasonHardcore")){
+                            Artisan helperArtisan = new Artisan();
+                            jsonReader.beginObject();
+                            // slug
+                            jsonReader.nextName();
+                            helperArtisan.setArtisanClass(ArtisanClass.get(jsonReader.nextString()));
+                            //level
+                            jsonReader.nextName();
+                            helperArtisan.setLevel(jsonReader.nextInt());
+                            //stepcurrent
+                            jsonReader.nextName();
+                            helperArtisan.setStepCurrent(jsonReader.nextInt());
+                            //stepMax
+                            jsonReader.nextName();
+                            helperArtisan.setStepMax(jsonReader.nextInt());
+                            jsonReader.endObject();
+                            switch(propertyName){
+                                case("blacksmith"):
+                                    profile.setBlacksmith(helperArtisan);
+                                    break;
+                                case("blacksmithHardcore"):
+                                    profile.setBlacksmithHardcore(helperArtisan);
+                                    break;
+                                case("blacksmithSeason"):
+                                    profile.setBlacksmithSeason(helperArtisan);
+                                    break;
+                                case("blacksmithSeasonHardcore"):
+                                    profile.setBlacksmithSeasonHardcore(helperArtisan);
+                                    break;
+                                case("jeweler"):
+                                    profile.setJeweler(helperArtisan);
+                                    break;
+                                case("jewelerHardcore"):
+                                    profile.setJewelerHardcore(helperArtisan);
+                                    break;
+                                case("jewelerSeason"):
+                                    profile.setJewelerSeason(helperArtisan);
+                                    break;
+                                case("jewelerSeasonHardcore"):
+                                    profile.setJewelerSeasonHardcore(helperArtisan);
+                                    break;
+                                case("mystic"):
+                                    profile.setMystic(helperArtisan);
+                                    break;
+                                case("mysticHardcore"):
+                                    profile.setMysticHardcore(helperArtisan);
+                                    break;
+                                case("mysticSeason"):
+                                    profile.setMysticSeason(helperArtisan);
+                                    break;
+                                case("mysticSeasonHardcore"):
+                                    profile.setMysticSeasonHardcore(helperArtisan);
+                                    break;
+                            }
+                        }
+                        //endregion
+                        //region SeasonalProfiles
+                        if(propertyName.equals("seasonalProfiles")){
+                            jsonReader.beginObject();
+                            List<ProfileSeasonal> profileSeasonalList = new ArrayList<>();
+                            profile.setProfileSeasonal(profileSeasonalList);
+                            boolean isEndOfSeasonalProfileArray = false;
+                            while(!isEndOfSeasonalProfileArray){
+                                ProfileSeasonal profileSeasonal = new ProfileSeasonal();
+                                jsonReader.nextName();
+                                jsonReader.beginObject();
+                                //seasonId
+                                jsonReader.nextName();
+                                profileSeasonal.setId(jsonReader.nextString());
+                                //paragonLevel
+                                jsonReader.nextName();
+                                profileSeasonal.setParagonLevel(jsonReader.nextInt());
+                                //paragonlevelhardcore
+                                jsonReader.nextName();
+                                profileSeasonal.setParagonLevelHardcore(jsonReader.nextInt());
+                                //kills
+                                jsonReader.nextName();
+                                jsonReader.beginObject();
+                                //kills monsters
+                                jsonReader.nextName();
+                                profileSeasonal.setKillsMonsters(jsonReader.nextDouble());
+                                //kills elites
+                                jsonReader.nextName();
+                                profileSeasonal.setKillsElites(jsonReader.nextDouble());
+                                //kills hardcore
+                                jsonReader.nextName();
+                                profileSeasonal.setKillsMonstersHardcore(jsonReader.nextDouble());
+                                jsonReader.endObject();
+                                //timePlayed
+                                jsonReader.nextName();
+                                jsonReader.beginObject();
+                                //timePlayed barbarian
+                                jsonReader.nextName();
+                                profileSeasonal.setTimePlayedBarbarian(jsonReader.nextDouble());
+                                //timePlayed crusader
+                                jsonReader.nextName();
+                                profileSeasonal.setTimePlayedCrusader(jsonReader.nextDouble());
+                                //timePlayed demon-hunter
+                                jsonReader.nextName();
+                                profileSeasonal.setTimePlayedDemonHunter(jsonReader.nextDouble());
+                                //timePlayed monk
+                                jsonReader.nextName();
+                                profileSeasonal.setTimePlayedMonk(jsonReader.nextDouble());
+                                //timePlayed necromancer
+                                jsonReader.nextName();
+                                profileSeasonal.setTimePlayedNecromancer(jsonReader.nextDouble());
+                                //timePlayed witch-doctor
+                                jsonReader.nextName();
+                                profileSeasonal.setTimePlayedWitchDoctor(jsonReader.nextDouble());
+                                //timePlayed wizard
+                                jsonReader.nextName();
+                                profileSeasonal.setTimePlayedWizard(jsonReader.nextDouble());
+                                jsonReader.endObject();
+                                //highestHardcoreLevel
+                                jsonReader.nextName();
+                                profileSeasonal.setHighestHardcoreLevel(jsonReader.nextInt());
+                                //progression
+                                jsonReader.nextName();
+                                jsonReader.beginObject();
+                                //act1
+                                jsonReader.nextName();
+                                profileSeasonal.setProgressionAct1(jsonReader.nextBoolean());
+                                //act2
+                                jsonReader.nextName();
+                                profileSeasonal.setProgressionAct2(jsonReader.nextBoolean());
+                                //act3
+                                jsonReader.nextName();
+                                profileSeasonal.setProgressionAct3(jsonReader.nextBoolean());
+                                //act4
+                                jsonReader.nextName();
+                                profileSeasonal.setProgressionAct4(jsonReader.nextBoolean());
+                                //act5
+                                jsonReader.nextName();
+                                profileSeasonal.setProgressionAct5(jsonReader.nextBoolean());
+
+                                profile.getProfileSeasonal().add(profileSeasonal);
+                                jsonReader.endObject();
+                                jsonReader.endObject();
+                                // if next is endArray, it means the end of the seasonProfile array. In that case we need to exit the while loop
+                                if(jsonReader.peek() == JsonToken.END_OBJECT){
+                                    isEndOfSeasonalProfileArray = true;
+                                }
+                            }
+
                         }
                         //endregion
                         break;
