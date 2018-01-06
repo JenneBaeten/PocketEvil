@@ -1,13 +1,21 @@
 package be.ehb.jenne.pocketevil.model;
 
+import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by Jenne on 29/12/2017.
  */
 
-class Hero {
+public class Hero extends RealmObject {
+    @PrimaryKey
     private String id;
     private String name;
+    @Ignore
     private HeroClass heroClass;
+    // Realm does not support enums, heroClassString is used for Realm instead of heroClass
+    private String heroClassString;
     private int gender;
     private int level;
     private double eliteKills;
@@ -16,6 +24,9 @@ class Hero {
     private boolean seasonal;
     private boolean dead;
     private String lastUpdated;
+
+    public Hero() {
+    }
 
     public String getId() {
         return id;
@@ -39,6 +50,15 @@ class Hero {
 
     public void setHeroClass(HeroClass heroClass) {
         this.heroClass = heroClass;
+        this.heroClassString = heroClass.getClassName();
+    }
+
+    public String getHeroClassString() {
+        return heroClassString;
+    }
+
+    public void setHeroClassString(String heroClassString) {
+        this.heroClassString = heroClassString;
     }
 
     public int getGender() {

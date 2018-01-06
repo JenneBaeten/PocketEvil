@@ -10,18 +10,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by Jenne on 29/12/2017.
  */
 
-public class Profile {
+public class Profile extends RealmObject {
+    @PrimaryKey
     private String battleTag;
     private int paragonLevel;
     private int paragonLevelHardcore;
     private int paragonLevelSeason;
     private int paragonLevelSeasonHardcore;
     private String guildName;
-    private List<Hero> heroes;
+    private RealmList<Hero> heroes;
     private String lastHeroPlayed;
     private String lastUpdated;
     private double killsMonsters;
@@ -40,7 +45,7 @@ public class Profile {
     private boolean progressionAct3;
     private boolean progressionAct4;
     private boolean progressionAct5;
-    private List<Hero> fallenHeroes;
+    private RealmList<Hero> fallenHeroes;
     private Artisan blacksmith;
     private Artisan blacksmithHardcore;
     private Artisan blacksmithSeason;
@@ -53,7 +58,7 @@ public class Profile {
     private Artisan mysticHardcore;
     private Artisan mysticSeason;
     private Artisan mysticSeasonHardcore;
-    private List<ProfileSeasonal> profileSeasonal;
+    private RealmList<ProfileSeasonal> profileSeasonal;
 
     public Profile() {
     }
@@ -106,11 +111,11 @@ public class Profile {
         this.guildName = guildName;
     }
 
-    public List<Hero> getHeroes() {
+    public RealmList<Hero> getHeroes() {
         return heroes;
     }
 
-    public void setHeroes(List<Hero> heroes) {
+    public void setHeroes(RealmList<Hero> heroes) {
         this.heroes = heroes;
     }
 
@@ -258,11 +263,11 @@ public class Profile {
         this.progressionAct5 = progressionAct5;
     }
 
-    public List<Hero> getFallenHeroes() {
+    public RealmList<Hero> getFallenHeroes() {
         return fallenHeroes;
     }
 
-    public void setFallenHeroes(List<Hero> fallenHeroes) {
+    public void setFallenHeroes(RealmList<Hero> fallenHeroes) {
         this.fallenHeroes = fallenHeroes;
     }
 
@@ -362,11 +367,11 @@ public class Profile {
         this.mysticSeasonHardcore = mysticSeasonHardcore;
     }
 
-    public List<ProfileSeasonal> getProfileSeasonal() {
+    public RealmList<ProfileSeasonal> getProfileSeasonal() {
         return profileSeasonal;
     }
 
-    public void setProfileSeasonal(List<ProfileSeasonal> profileSeasonal) {
+    public void setProfileSeasonal(RealmList<ProfileSeasonal> profileSeasonal) {
         this.profileSeasonal = profileSeasonal;
     }
 

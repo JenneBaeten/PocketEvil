@@ -1,4 +1,4 @@
-package be.ehb.jenne.pocketevil.model;
+package be.ehb.jenne.pocketevil.VolleyRequest;
 
 import android.util.Log;
 
@@ -7,6 +7,7 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -23,28 +24,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import be.ehb.jenne.pocketevil.model.Artisan;
+import be.ehb.jenne.pocketevil.model.ArtisanClass;
+import be.ehb.jenne.pocketevil.model.Hero;
+import be.ehb.jenne.pocketevil.model.HeroClass;
+import be.ehb.jenne.pocketevil.model.Profile;
+import be.ehb.jenne.pocketevil.model.ProfileSeasonal;
+import io.realm.Realm;
+import io.realm.RealmList;
+
 /**
  * Created by Jenne on 29/12/2017.
  * Code from documentation:
  * https://developer.android.com/training/volley/request-custom.html
  */
 
-public class CustomRequest<T> extends Request<T> {
+public class ProfileRequest extends Request<Profile> {
+    private final String TAG = "ProfileRequest";
     private final Gson gson = new Gson();
-    private final Class<T> clazz;
     private final Map<String, String> headers;
-    private final Response.Listener<T> listener;
+    private final Response.Listener<Profile> listener;
 
-    /**
-     * Make a GET request and return a parsed object from JSON.
-     *
-     * @param url URL of the request to make
-     * @param headers Map of request headers
-     */
-    public CustomRequest(String url, Class<T> clazz, Map<String, String> headers,
-                         Response.Listener<T> listener, Response.ErrorListener errorListener) {
+    public ProfileRequest(String url, Map<String, String> headers, Response.Listener<Profile> listener, Response.ErrorListener errorListener) {
         super(Method.GET, url, errorListener);
-        this.clazz = clazz;
         this.headers = headers;
         this.listener = listener;
     }
@@ -55,68 +57,66 @@ public class CustomRequest<T> extends Request<T> {
     }
 
     @Override
-    protected void deliverResponse(T response) {
+    protected void deliverResponse(Profile response) {
         listener.onResponse(response);
     }
 
     @Override
-    protected Response<T> parseNetworkResponse(NetworkResponse response) {
+    protected Response<Profile> parseNetworkResponse(NetworkResponse response) {
         try {
             String json = new String(
                     response.data,
                     HttpHeaderParser.parseCharset(response.headers));
-            Profile profile = parseProfileRequest(json);
-            Log.i("TEST5", profile.toString());
             return Response.success(
-                    gson.fromJson(json, clazz),
+                    parseProfileRequest(json),
                     HttpHeaderParser.parseCacheHeaders(response));
         } catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
         } catch (JsonSyntaxException e) {
             return Response.error(new ParseError(e));
-        } catch (IOException e) {
-            return Response.error(new ParseError(e));
+        } catch (VolleyError volleyError) {
+            return Response.error(volleyError);
         }
     }
-    private Profile parseProfileRequest(String json){
+    private Profile parseProfileRequest(String json) throws VolleyError{
         Profile profile = new Profile();
         StringReader stringReader = new StringReader(json);
         JsonReader jsonReader = new JsonReader(stringReader);
         boolean documentClosed = false;
         String propertyName = "";
-        Log.d("Debug Parsing", "parseProfileRequest: ");
+        Log.d(TAG, "parseProfileRequest json: " + json);
         while(!documentClosed){
             try{
-                Log.d("Debug Parsing", "parseProfileRequest: peek:" + jsonReader.peek());
+                Log.v(TAG, "parseProfileRequest: peek:" + jsonReader.peek());
                 switch(jsonReader.peek()){
                     case BEGIN_ARRAY:
-                        Log.d("Debug Parsing", "parseProfileRequest: Begin Array");
+                        Log.v(TAG, "parseProfileRequest: Begin Array");
                         jsonReader.beginArray();
                         break;
                     case BEGIN_OBJECT:
-                        Log.d("Debug Parsing", "parseProfileRequest: Begin Object");
+                        Log.v(TAG, "parseProfileRequest: Begin Object");
                         jsonReader.beginObject();
                         break;
                     case END_ARRAY:
-                        Log.d("Debug Parsing", "parseProfileRequest: End Array");
+                        Log.v(TAG, "parseProfileRequest: End Array");
                         jsonReader.endArray();
                         break;
                     case END_DOCUMENT:
-                        Log.d("Debug Parsing", "parseProfileRequest: End Document");
+                        Log.v(TAG, "parseProfileRequest: End Document");
                         jsonReader.close();
                         documentClosed = true;
                         break;
                     case END_OBJECT:
-                        Log.d("Debug Parsing", "parseProfileRequest: End Object");
+                        Log.v(TAG, "parseProfileRequest: End Object");
                         jsonReader.endObject();
                         break;
                     case NAME:
                         propertyName = jsonReader.nextName();
-                        Log.d("Debug Parsing", "parseProfileRequest: Name: " + propertyName);
+                        Log.v(TAG, "parseProfileRequest: Name: " + propertyName);
                         //region Heroes
                         if(propertyName.equals("heroes")){
                             jsonReader.beginArray();
-                            List<Hero> heroList = new ArrayList<>();
+                            RealmList<Hero> heroList = new RealmList<>();
                             profile.setHeroes(heroList);
                             while(jsonReader.peek() != JsonToken.END_ARRAY){
                                 Hero helperHero = new Hero();
@@ -225,7 +225,7 @@ public class CustomRequest<T> extends Request<T> {
                         //region SeasonalProfiles
                         if(propertyName.equals("seasonalProfiles")){
                             jsonReader.beginObject();
-                            List<ProfileSeasonal> profileSeasonalList = new ArrayList<>();
+                            RealmList<ProfileSeasonal> profileSeasonalList = new RealmList<>();
                             profile.setProfileSeasonal(profileSeasonalList);
                             boolean isEndOfSeasonalProfileArray = false;
                             while(!isEndOfSeasonalProfileArray){
@@ -312,30 +312,38 @@ public class CustomRequest<T> extends Request<T> {
 
                         }
                         //endregion
+                        //region Code
+                        //used when user makes a wrong request
+                        if(propertyName.equals("code")){
+                            jsonReader.nextString();
+                            jsonReader.nextName();
+                            throw new VolleyError(jsonReader.nextString());
+                        }
+                        //endregion
                         break;
                     case NULL:
-                        Log.d("Debug Parsing", "parseProfileRequest: Null");
+                        Log.v(TAG, "parseProfileRequest: Null");
                         jsonReader.nextNull();
                         break;
                     case NUMBER:
                         // I parse everything as a double as there is no way of distinguishing the type of the next number
                         double numberHelper = jsonReader.nextDouble();
-                        Log.d("Debug Parsing", "parseProfileRequest: Number " + propertyName + " Value: " + numberHelper);
+                        Log.v(TAG, "parseProfileRequest: Number " + propertyName + " Value: " + numberHelper);
                         profile.numberSetter(numberHelper, propertyName);
                         break;
                     case STRING:
                         String stringHelper = jsonReader.nextString();
-                        Log.d("Debug Parsing", "parseProfileRequest: String " + propertyName + " Value: " + stringHelper);
+                        Log.v(TAG, "parseProfileRequest: String " + propertyName + " Value: " + stringHelper);
                         profile.stringSetter(stringHelper, propertyName);
                         break;
                     case BOOLEAN:
                         boolean boolHelper = jsonReader.nextBoolean();
-                        Log.d("Debug Parsing", "parseProfileRequest: Boolean " + propertyName + " Value: " + boolHelper);
+                        Log.v(TAG, "parseProfileRequest: Boolean " + propertyName + " Value: " + boolHelper);
                         profile.boolSetter(boolHelper, propertyName);
                         break;
                 }
             } catch (IOException e) {
-                Log.e("JsonParseError", "parseProfileRequest: ", e);
+                Log.e(TAG, "parseProfileRequest: ", e);
             }
         }
         return profile;

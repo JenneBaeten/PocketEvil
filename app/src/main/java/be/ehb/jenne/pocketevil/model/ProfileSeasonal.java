@@ -1,10 +1,14 @@
 package be.ehb.jenne.pocketevil.model;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by Jenne on 29/12/2017.
  */
 
-class ProfileSeasonal {
+public class ProfileSeasonal extends RealmObject {
+    @PrimaryKey
     private String id;
     private int paragonLevel;
     private int paragonLevelHardcore;
@@ -24,6 +28,9 @@ class ProfileSeasonal {
     private boolean progressionAct3;
     private boolean progressionAct4;
     private boolean progressionAct5;
+
+    public ProfileSeasonal() {
+    }
 
     public String getId() {
         return id;
