@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.annotation.DrawableRes;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -28,12 +30,12 @@ import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import io.realm.exceptions.RealmPrimaryKeyConstraintException;
 
-public class SearchProfileActivity extends Activity {
+public class SearchProfileActivity extends AppCompatActivity {
     private final String TAG = "SearchProfileActivity";
 
     private Context mContext;
 
-    private Toolbar toolbar;
+    //private Toolbar toolbar;
     private EditText editText;
     private Button button;
 
@@ -96,8 +98,10 @@ public class SearchProfileActivity extends Activity {
         });
 
         //toolbar
-        //toolbar = findViewById(R.id.tToolbar);
-        //setSupportActionBar(toolbar);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar_search_profile);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setLogo(R.drawable.diablo3_icon_hdpi);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 
 

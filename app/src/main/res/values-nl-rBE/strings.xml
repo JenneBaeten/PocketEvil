@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketEvil</string>
+    <string name="title_activity_search_profile">Profiel Opzoeking</string>
+    <string name="title_activity_overview_profile">Profiel Overzicht</string>
+    <string name="edit_text_search_profile_hint">Battle Tag (naam-####)</string>
+    <string name="button_search_profile">Zoeken</string>
+    <string name="tab_name_overview_profile_carreer">Carrière</string>
+    <string name="tab_name_overview_profile_heroes">Helden</string>
+    <string name="fragment_carreer_lifetimekills">Totaal executies</string>
+    <string name="fragment_carreer_stats">Statistieken</string>
+    <string name="fragment_carreer_elitekills">Elite executies</string>
+    <string name="fragment_carreer_paragonlevel">Paragon Niveau</string>
+    <string name="fragment_carreer_timeplayedbyclass">Tijd Gespeeld Per Klasse</string>
+    <string name="fragment_carreer_progression">Voortgang</string>
+    <string name="fragment_carreer_act1">Act 1</string>
+    <string name="fragment_carreer_act2">Act 2</string>
+    <string name="fragment_carreer_act3">Act 3</string>
+    <string name="fragment_carreer_act4">Act 4</string>
+    <string name="fragment_carreer_act5">Act 5</string>
+    <string name="fragment_carreer_artisans">Ambachtsmannen</string>
+    <string name="fragment_carreer_blacksmith">Smid</string>
+    <string name="fragment_carreer_Jeweler">Juwelier</string>
+    <string name="fragment_carreer_Mystic">Mysticus</string>
+    <string name="fragment_carreer_level">Niveau</string>
+    <string name="fragment_carreer_levelhardcore">Niveau Hardcore</string>
+</resources>

@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import be.ehb.jenne.pocketevil.R;
+
 /**
  * Created by Jenne on 6/01/2018.
  */
@@ -43,8 +45,8 @@ public class ProfileFragmentPagerAdapter extends FragmentPagerAdapter{
     @Override
     public CharSequence getPageTitle(int position) {
         if(position == 0)
-            return "Carreer";
+            return mContext.getString(R.string.tab_name_overview_profile_carreer);
         else
-            return "Heroes";
+            return mContext.getString(R.string.tab_name_overview_profile_heroes);
     }
 }

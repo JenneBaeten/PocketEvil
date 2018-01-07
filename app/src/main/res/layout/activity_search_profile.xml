@@ -8,10 +8,13 @@
     android:orientation="vertical"
     tools:context="be.ehb.jenne.pocketevil.controller.SearchProfileActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tToolbar"
+    <!-- toolbar -->
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar_search_profile"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark" />
+    <!-- app:logo="@drawable/diablo3_icon_hdpi" -->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +22,7 @@
 
         <EditText
             android:id="@+id/profileTextInput"
-            android:hint="Battle Tag (name-####)"
+            android:hint="@string/edit_text_search_profile_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -33,6 +36,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/profileTextInput"
             android:layout_centerHorizontal="true"
-            android:text="Search" />
+            android:text="@string/button_search_profile" />
     </RelativeLayout>
 </LinearLayout>

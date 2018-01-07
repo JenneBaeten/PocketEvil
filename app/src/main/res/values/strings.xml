@@ -1,8 +1,26 @@
 <resources>
     <string name="app_name">PocketEvil</string>
-    <string name="title_activity_search_profile">SearchProfileActivity</string>
-    <string name="title_activity_overview_profile">OverviewProfileActivity</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_search_profile">Profile Search</string>
+    <string name="title_activity_overview_profile">Profile Overview</string>
+    <string name="edit_text_search_profile_hint">Battle Tag (name-####)</string>
+    <string name="button_search_profile">Search</string>
+    <string name="tab_name_overview_profile_carreer">Carreer</string>
+    <string name="tab_name_overview_profile_heroes">Heroes</string>
+    <string name="fragment_carreer_lifetimekills">Lifetime Kills</string>
+    <string name="fragment_carreer_stats">Stats</string>
+    <string name="fragment_carreer_elitekills">Elite Kills</string>
+    <string name="fragment_carreer_paragonlevel">Paragon Level</string>
+    <string name="fragment_carreer_timeplayedbyclass">Time Played By Class</string>
+    <string name="fragment_carreer_progression">Progression</string>
+    <string name="fragment_carreer_act1">Act 1</string>
+    <string name="fragment_carreer_act2">Act 2</string>
+    <string name="fragment_carreer_act3">Act 3</string>
+    <string name="fragment_carreer_act4">Act 4</string>
+    <string name="fragment_carreer_act5">Act 5</string>
+    <string name="fragment_carreer_artisans">Artisans</string>
+    <string name="fragment_carreer_blacksmith">Blacksmith</string>
+    <string name="fragment_carreer_Jeweler">Jeweler</string>
+    <string name="fragment_carreer_Mystic">Mystic</string>
+    <string name="fragment_carreer_level">Level</string>
+    <string name="fragment_carreer_levelhardcore">Level Hardcore</string>
 </resources>
