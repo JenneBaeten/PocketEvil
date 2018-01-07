@@ -17,7 +17,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:text="@string/fragment_carreer_stats"
-            android:textAlignment="center" />
+            android:textAlignment="center"/>
         <!-- Stats: Lifetime Kills -->
         <LinearLayout
             android:id="@+id/llKillsLifetime"
@@ -25,21 +25,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tvStats"
             android:layout_centerInParent="true"
+            android:orientation="horizontal"
             android:gravity="center">
 
             <TextView
                 android:id="@+id/killsLifetimeText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/fragment_carreer_lifetimekills" />
-            <Space
-                android:layout_width="32dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/fragment_carreer_lifetimekills"
+                android:layout_weight="1"/>
             <TextView
                 android:id="@+id/killsLifetimeValue"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:text=""
+                android:layout_weight="1"/>
         </LinearLayout>
         <!-- Stats: Elite Kills -->
         <LinearLayout
@@ -52,17 +52,17 @@
 
             <TextView
                 android:id="@+id/killsEliteText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/fragment_carreer_elitekills" />
-            <Space
-                android:layout_width="32dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/fragment_carreer_elitekills"
+                android:layout_weight="1"/>
+
             <TextView
-                android:id="@+id/KillsEliteValue"
-                android:layout_width="wrap_content"
+                android:id="@+id/killsEliteValue"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:text=""
+                android:layout_weight="1"/>
         </LinearLayout>
         <!-- Stats: Paragon Level -->
         <LinearLayout
@@ -75,20 +75,19 @@
 
             <TextView
                 android:id="@+id/paragonLevelText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/fragment_carreer_paragonlevel" />
-            <Space
-                android:layout_width="32dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/fragment_carreer_paragonlevel"
+                android:layout_weight="1"/>
             <TextView
                 android:id="@+id/paragonLevelValue"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:text=""
+                android:layout_weight="1"/>
         </LinearLayout>
 
-        <!-- Time Played By Class -->
+        <!-- Time Played By Class - TextView -->
         <TextView
             android:id="@+id/tvTimePlayedByClass"
             android:layout_width="match_parent"
@@ -97,138 +96,106 @@
             android:layout_centerHorizontal="true"
             android:text="@string/fragment_carreer_timeplayedbyclass"
             android:textAlignment="center" />
-        <!-- Time Played By Class (1) -->
+        <!-- Time Played By Class - Names classes + Values -->
         <LinearLayout
-            android:id="@+id/llTimePlayedByClass1"
+            android:id="@+id/llTimePlayedByClass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTimePlayedByClass"
             android:layout_centerInParent="true"
             android:orientation="horizontal"
             android:gravity="center">
-            <!-- Barbarian -->
-            <RelativeLayout
+            <!-- Time Played By Class - Names classes -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <!-- Barbarian -->
                 <TextView
                     android:id="@+id/tvBarbarianText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Barbarian"/>
-                <TextView
-                    android:id="@+id/tvBarbarianValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvBarbarianText"/>
-            </RelativeLayout>
-            <!-- Crusader -->
-            <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-                android:layout_weight="1">
+                <!-- Crusader -->
                 <TextView
                     android:id="@+id/tvCrusaderText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Crusader"/>
-                <TextView
-                    android:id="@+id/tvCrusaderValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvCrusaderText"
-                    />
-            </RelativeLayout>
-            <!-- Demon Hunter -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                <!-- Demon Hunter -->
                 <TextView
                     android:id="@+id/tvDemonHunterText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Demon Hunter"/>
-                <TextView
-                    android:id="@+id/tvDemonHunterValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvDemonHunterText"/>
-            </RelativeLayout>
-            <!-- Monk -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                <!-- Monk -->
                 <TextView
                     android:id="@+id/tvMonkText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Monk"/>
-                <TextView
-                    android:id="@+id/tvMonkValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvMonkText"/>
-            </RelativeLayout>
-
-        </LinearLayout>
-        <!-- Time Played By Class (21 -->
-        <LinearLayout
-            android:id="@+id/llTimePlayedByClass2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/llTimePlayedByClass1"
-            android:layout_centerInParent="true"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <!-- Necromancer -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                <!-- Necromancer -->
                 <TextView
                     android:id="@+id/tvNecromancerText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Necromancer"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvNecromancerText"/>
-            </RelativeLayout>
-            <!-- Witch Doctor-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                <!-- Witch Doctor-->
                 <TextView
                     android:id="@+id/tvWitchDoctorText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Witch Doctor"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvWitchDoctorText"
-                    />
-            </RelativeLayout>
-            <!-- Wizard -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                <!-- Wizard -->
                 <TextView
                     android:id="@+id/tvWizardText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Demon Hunter"/>
+                    android:text="Wizard"/>
+            </LinearLayout>
+            <!-- Time Played By Class - Values -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <!-- Barbarian -->
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvWizardText"/>
-            </RelativeLayout>
-
+                    android:id="@+id/tvBarbarianValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <!-- Crusader -->
+                <TextView
+                    android:id="@+id/tvCrusaderValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <!-- Demon Hunter -->
+                <TextView
+                    android:id="@+id/tvDemonHunterValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <!-- Monk -->
+                <TextView
+                    android:id="@+id/tvMonkValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <!-- Necromancer -->
+                <TextView
+                    android:id="@+id/tvNecromancerValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <!-- Witch Doctor-->
+                <TextView
+                    android:id="@+id/tvWitchDoctorValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <!-- Wizard -->
+                <TextView
+                    android:id="@+id/tvWizardValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
         </LinearLayout>
 
         <!-- Progression -->
@@ -236,21 +203,287 @@
             android:id="@+id/tvProgression"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/llTimePlayedByClass2"
+            android:layout_below="@id/llTimePlayedByClass"
             android:layout_centerHorizontal="true"
             android:text="@string/fragment_carreer_progression"
             android:textAlignment="center" />
+        <!-- Progression - Names acts + Values -->
+        <LinearLayout
+            android:id="@+id/llProgression"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvProgression"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <!-- Actnames -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <!-- Act 1 -->
+                <TextView
+                    android:id="@+id/tvAct1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_carreer_act1"/>
+                <!-- Act 2 -->
+                <TextView
+                    android:id="@+id/tvAct2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_carreer_act2"/>
+                <!-- Act 3 -->
+                <TextView
+                    android:id="@+id/tvAct3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_carreer_act3"/>
+                <!-- Act 4 -->
+                <TextView
+                    android:id="@+id/tvAct4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_carreer_act4"/>
+                <!-- Act 5 -->
+                <TextView
+                    android:id="@+id/tvAct5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_carreer_act5"/>
+
+            </LinearLayout>
+            <!-- Progression values -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <!-- Act 1 -->
+                <TextView
+                    android:id="@+id/tvAct1Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+                <!-- Act 2 -->
+                <TextView
+                    android:id="@+id/tvAct2Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+                <!-- Act 3 -->
+                <TextView
+                    android:id="@+id/tvAct3Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+                <!-- Act 4 -->
+                <TextView
+                    android:id="@+id/tvAct4Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+                <!-- Act 5 -->
+                <TextView
+                    android:id="@+id/tvAct5Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+
+            </LinearLayout>
+        </LinearLayout>
 
         <!-- Artisans -->
         <TextView
             android:id="@+id/tvArtisans"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/llParagonLevel"
+            android:layout_below="@id/llProgression"
             android:layout_centerHorizontal="true"
             android:text="@string/fragment_carreer_artisans"
             android:textAlignment="center" />
-
+        <!-- Artisans - Artisan + Values -->
+        <LinearLayout
+            android:id="@+id/llArtisans"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvArtisans"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <!-- Artisans -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <!-- Artisan - Blacksmith -->
+                <TextView
+                    android:id="@+id/tvArtisanBlacksmith"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/fragment_carreer_blacksmith"/>
+                <!-- Artisan - Jeweler -->
+                <TextView
+                    android:id="@+id/tvArtisanJeweler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/fragment_carreer_jeweler"/>
+                <!-- Artisan - Mystic -->
+                <TextView
+                    android:id="@+id/tvArtisanMystic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/fragment_carreer_mystic"/>
+            </LinearLayout>
+            <!-- Artisan values -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <!-- Artisan values - Blacksmith -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <!-- Blacksmith - normal -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <!-- Leveltext -->
+                        <TextView
+                            android:id="@+id/tvBlacksmithLevel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/fragment_carreer_level"/>
+                        <!-- Value -->
+                        <TextView
+                            android:id="@+id/tvBlacksmithValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                    <!-- Blacksmith - hardcore -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <!-- Leveltext -->
+                        <TextView
+                            android:id="@+id/tvBlacksmithHardcoreLevel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/fragment_carreer_levelhardcore"/>
+                        <!-- Value -->
+                        <TextView
+                            android:id="@+id/tvBlacksmithHardcoreValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- Artisan values - Jeweler -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <!-- Jeweler - normal -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <!-- Leveltext -->
+                        <TextView
+                            android:id="@+id/tvJeLevel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/fragment_carreer_level"/>
+                        <!-- Value -->
+                        <TextView
+                            android:id="@+id/tvJewelerValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                    <!-- Jeweler - hardcore -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <!-- Leveltext -->
+                        <TextView
+                            android:id="@+id/tvJewelerHardcoreLevel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/fragment_carreer_levelhardcore"/>
+                        <!-- Value -->
+                        <TextView
+                            android:id="@+id/tvJewelerHardcoreValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- Artisan values - Mystic -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <!-- Mystic - normal -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <!-- Leveltext -->
+                        <TextView
+                            android:id="@+id/tvMysticLevel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/fragment_carreer_level"/>
+                        <!-- Value -->
+                        <TextView
+                            android:id="@+id/tvMysticValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                    <!-- Mystic - hardcore -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <!-- Leveltext -->
+                        <TextView
+                            android:id="@+id/tvMysticHardcoreLevel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/fragment_carreer_levelhardcore"/>
+                        <!-- Value -->
+                        <TextView
+                            android:id="@+id/tvMysticHardcoreValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 </ScrollView>

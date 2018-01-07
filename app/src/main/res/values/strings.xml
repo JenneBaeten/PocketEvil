@@ -19,8 +19,10 @@
     <string name="fragment_carreer_act5">Act 5</string>
     <string name="fragment_carreer_artisans">Artisans</string>
     <string name="fragment_carreer_blacksmith">Blacksmith</string>
-    <string name="fragment_carreer_Jeweler">Jeweler</string>
-    <string name="fragment_carreer_Mystic">Mystic</string>
+    <string name="fragment_carreer_jeweler">Jeweler</string>
+    <string name="fragment_carreer_mystic">Mystic</string>
     <string name="fragment_carreer_level">Level</string>
     <string name="fragment_carreer_levelhardcore">Level Hardcore</string>
+    <string name="fragment_carreer_act_completed">Completed</string>
+    <string name="fragment_carreer_act_uncompleted">Incomplete</string>
 </resources>

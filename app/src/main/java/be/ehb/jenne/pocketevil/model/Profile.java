@@ -467,5 +467,9 @@ public class Profile extends RealmObject {
                 Log.d("ProfileSetter", "invokeSetter: unsupported propertyname: " + propertyName);
         }
     }
+
+    public double getPercentagePlayed(double input) {
+        return input / (timePlayedBarbarian + timePlayedCrusader + timePlayedDemonHunter + timePlayedMonk + timePlayedNecromancer + timePlayedWitchDoctor + timePlayedWizard);
+    }
 }
 

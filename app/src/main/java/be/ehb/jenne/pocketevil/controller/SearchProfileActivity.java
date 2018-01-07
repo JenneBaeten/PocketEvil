@@ -100,7 +100,7 @@ public class SearchProfileActivity extends AppCompatActivity {
         //toolbar
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar_search_profile);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setLogo(R.drawable.diablo3_icon_hdpi);
+        getSupportActionBar().setLogo(R.drawable.diablo3_icon);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 

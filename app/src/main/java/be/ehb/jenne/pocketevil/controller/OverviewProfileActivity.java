@@ -34,7 +34,7 @@ public class OverviewProfileActivity extends AppCompatActivity {
 
         android.support.v7.widget.Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_overview_profile);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setLogo(R.drawable.diablo3_icon_hdpi);
+        getSupportActionBar().setLogo(R.drawable.diablo3_icon);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setSubtitle(profileId);

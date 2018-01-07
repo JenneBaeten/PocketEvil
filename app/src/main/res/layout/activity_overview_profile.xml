@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
-        android:id="@+id/toolbar_overview_profile"/>
+        android:id="@+id/toolbar_overview_profile" />
         <!-- app:logo="@drawable/diablo3_icon_hdpi" -->
 
     <android.support.design.widget.TabLayout

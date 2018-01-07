@@ -20,8 +20,10 @@
     <string name="fragment_carreer_act5">Act 5</string>
     <string name="fragment_carreer_artisans">Ambachtsmannen</string>
     <string name="fragment_carreer_blacksmith">Smid</string>
-    <string name="fragment_carreer_Jeweler">Juwelier</string>
-    <string name="fragment_carreer_Mystic">Mysticus</string>
+    <string name="fragment_carreer_jeweler">Juwelier</string>
+    <string name="fragment_carreer_mystic">Mysticus</string>
     <string name="fragment_carreer_level">Niveau</string>
     <string name="fragment_carreer_levelhardcore">Niveau Hardcore</string>
+    <string name="fragment_carreer_act_completed">Uitgespeeld</string>
+    <string name="fragment_carreer_act_uncompleted">Nog niet uitgespeeld</string>
 </resources>
