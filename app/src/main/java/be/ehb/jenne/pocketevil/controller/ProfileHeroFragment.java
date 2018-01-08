@@ -2,7 +2,6 @@ package be.ehb.jenne.pocketevil.controller;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,9 +58,7 @@ public class ProfileHeroFragment extends Fragment {
         //ListView listView = (ListView) getActivity().findViewById(R.id.lvHeroes);
         ListView listView = (ListView) view.findViewById(R.id.lvHeroes);
         heroList = new ArrayList<Hero>();
-        for(Hero h : profile.getHeroes()){
-            heroList.add(h);
-        }
+        heroList.addAll(profile.getHeroes());
         HeroListAdapter heroListAdapter = new HeroListAdapter(heroList, this.getContext());
         listView.setAdapter(heroListAdapter);
         return view;

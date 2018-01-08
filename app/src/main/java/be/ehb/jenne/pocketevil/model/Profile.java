@@ -2,14 +2,6 @@ package be.ehb.jenne.pocketevil.model;
 
 import android.util.Log;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;

@@ -4,8 +4,6 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import io.realm.RealmObject;
-
 /**
  * Created by Jenne on 29/12/2017.
  * accepted anwser from Darrel Teague, based on Joshua Bloch's pattern.

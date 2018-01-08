@@ -1,19 +1,12 @@
 package be.ehb.jenne.pocketevil.controller;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 
 import be.ehb.jenne.pocketevil.R;
-import be.ehb.jenne.pocketevil.model.Profile;
-import io.realm.Realm;
 
 public class OverviewProfileActivity extends AppCompatActivity {
     private final String TAG = "OverviewProfileActivity";

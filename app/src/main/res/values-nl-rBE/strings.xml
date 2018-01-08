@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PocketEvil</string>
-    <string name="title_activity_search_profile">Profiel Opzoeking</string>
     <string name="title_activity_overview_profile">Profiel Overzicht</string>
     <string name="edit_text_search_profile_hint">Battle Tag (naam-####)</string>
     <string name="button_search_profile">Zoeken</string>

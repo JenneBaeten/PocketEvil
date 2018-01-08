@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">PocketEvil</string>
-    <string name="title_activity_search_profile">Profile Search</string>
     <string name="title_activity_overview_profile">Profile Overview</string>
     <string name="edit_text_search_profile_hint">Battle Tag (name-####)</string>
     <string name="button_search_profile">Search</string>
-    <string name="tab_name_overview_profile_carreer">Carreer</string>
+    <string name="tab_name_overview_profile_carreer">Career</string>
     <string name="tab_name_overview_profile_heroes">Heroes</string>
     <string name="fragment_carreer_lifetimekills">Lifetime Kills</string>
     <string name="fragment_carreer_stats">Stats</string>

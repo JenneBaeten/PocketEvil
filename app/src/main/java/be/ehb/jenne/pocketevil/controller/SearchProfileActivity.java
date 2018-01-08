@@ -4,19 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.app.Activity;
-import android.support.annotation.DrawableRes;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,8 +22,6 @@ import be.ehb.jenne.pocketevil.VolleySingleton;
 import be.ehb.jenne.pocketevil.VolleyRequest.ProfileRequest;
 import be.ehb.jenne.pocketevil.model.Profile;
 import io.realm.Realm;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
 import io.realm.exceptions.RealmPrimaryKeyConstraintException;
 
 public class SearchProfileActivity extends AppCompatActivity {

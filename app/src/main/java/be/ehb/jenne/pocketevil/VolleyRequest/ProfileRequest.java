@@ -10,9 +10,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
@@ -20,8 +17,6 @@ import com.google.gson.stream.JsonToken;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import be.ehb.jenne.pocketevil.model.Artisan;
@@ -30,7 +25,6 @@ import be.ehb.jenne.pocketevil.model.Hero;
 import be.ehb.jenne.pocketevil.model.HeroClass;
 import be.ehb.jenne.pocketevil.model.Profile;
 import be.ehb.jenne.pocketevil.model.ProfileSeasonal;
-import io.realm.Realm;
 import io.realm.RealmList;
 
 /**

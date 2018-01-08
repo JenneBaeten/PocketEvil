@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF212121</color>
     <color name="colorPrimaryDark">#FF000000</color>
-    <color name="colorAccent">#c3011d</color>
     <color name="accent_pocketEvil">#c3011d</color>
 </resources>
