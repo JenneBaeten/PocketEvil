@@ -26,4 +26,5 @@
     <string name="fragment_carreer_levelhardcore">Niveau Hardcore</string>
     <string name="fragment_carreer_act_completed">Uitgespeeld</string>
     <string name="fragment_carreer_act_uncompleted">Nog niet uitgespeeld</string>
+    <string name="search_battle_tag_empty">Vul een battle tag in volgens het formaat: naam-####</string>
 </resources>

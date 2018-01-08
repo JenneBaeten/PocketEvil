@@ -25,4 +25,5 @@
     <string name="fragment_carreer_levelhardcore">Level Hardcore</string>
     <string name="fragment_carreer_act_completed">Completed</string>
     <string name="fragment_carreer_act_uncompleted">Incomplete</string>
+    <string name="search_battle_tag_empty">Provide a battle tag in following format: name-####</string>
 </resources>

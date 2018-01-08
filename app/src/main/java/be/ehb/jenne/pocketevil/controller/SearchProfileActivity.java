@@ -55,50 +55,55 @@ public class SearchProfileActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ApplicationInfo applicationInfo = null;
-                try {
-                    applicationInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-                } catch (PackageManager.NameNotFoundException e) {
-                    e.printStackTrace();
+                if(editText.getText().toString().equals("") || editText.getText().toString() == null){
+                    Snackbar.make(findViewById(R.id.svScrollView), R.string.search_battle_tag_empty, Snackbar.LENGTH_SHORT).show();
                 }
-                Bundle bundle = applicationInfo.metaData;
-                final String apiKey = bundle.getString("blizzard_api_key");
-                String url = "https://eu.api.battle.net/d3/profile/" + editText.getText() + "/?locale=en_GB&apikey=" + apiKey;
-                spinner.setVisibility(View.VISIBLE);
-                ProfileRequest profileRequest = new ProfileRequest(url,null, new Response.Listener<Profile>() {
-                    @Override
-                    public void onResponse(Profile response) {
-                        if(response != null && !response.getBattleTag().equals("")) {
-                            Realm realm = Realm.getDefaultInstance();
-                            try {
-                                realm.beginTransaction();
-                                realm.insertOrUpdate(response);
-                                realm.commitTransaction();
-                                Intent intent = new Intent(getBaseContext(), OverviewProfileActivity.class);
-                                intent.putExtra("PROFILE_ID", response.getBattleTag());
-                                spinner.setVisibility(View.GONE);
-                                startActivity(intent);
-                            } catch (IllegalStateException e){
-                                Log.e(TAG, "profileRequest onResponse: ", e);
-                            } catch (RealmPrimaryKeyConstraintException e) {
-                                Log.i(TAG, "profileRequest onResponse: ", e);
-                            } finally {
-                                realm.close();
+                else {
+                    ApplicationInfo applicationInfo = null;
+                    try {
+                        applicationInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+                    } catch (PackageManager.NameNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    Bundle bundle = applicationInfo.metaData;
+                    final String apiKey = bundle.getString("blizzard_api_key");
+                    String url = "https://eu.api.battle.net/d3/profile/" + editText.getText() + "/?locale=en_GB&apikey=" + apiKey;
+                    spinner.setVisibility(View.VISIBLE);
+                    ProfileRequest profileRequest = new ProfileRequest(url,null, new Response.Listener<Profile>() {
+                        @Override
+                        public void onResponse(Profile response) {
+                            if(response != null && !response.getBattleTag().equals("")) {
+                                Realm realm = Realm.getDefaultInstance();
+                                try {
+                                    realm.beginTransaction();
+                                    realm.insertOrUpdate(response);
+                                    realm.commitTransaction();
+                                    Intent intent = new Intent(getBaseContext(), OverviewProfileActivity.class);
+                                    intent.putExtra("PROFILE_ID", response.getBattleTag());
+                                    spinner.setVisibility(View.GONE);
+                                    startActivity(intent);
+                                } catch (IllegalStateException e){
+                                    Log.e(TAG, "profileRequest onResponse: ", e);
+                                } catch (RealmPrimaryKeyConstraintException e) {
+                                    Log.i(TAG, "profileRequest onResponse: ", e);
+                                } finally {
+                                    realm.close();
+                                }
                             }
                         }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
 
-                        //Toast toast = Toast.makeText(mContext, error.toString().replaceFirst("com.android.volley.VolleyError: ", ""), Toast.LENGTH_SHORT);
-                        //toast.show();
-                        spinner.setVisibility(View.GONE);
-                        Snackbar.make(findViewById(R.id.svScrollView), error.toString().replaceFirst("com.android.volley.VolleyError: ", ""), Snackbar.LENGTH_SHORT).show();
-                        Log.d(TAG, "onErrorResponse: " + error.toString());
-                    }
-                });
-                VolleySingleton.getInstance(mContext).addToRequestQueue(profileRequest);
+                            //Toast toast = Toast.makeText(mContext, error.toString().replaceFirst("com.android.volley.VolleyError: ", ""), Toast.LENGTH_SHORT);
+                            //toast.show();
+                            spinner.setVisibility(View.GONE);
+                            Snackbar.make(findViewById(R.id.svScrollView), error.toString().replaceFirst("com.android.volley.VolleyError: ", ""), Snackbar.LENGTH_SHORT).show();
+                            Log.d(TAG, "onErrorResponse: " + error.toString());
+                        }
+                    });
+                    VolleySingleton.getInstance(mContext).addToRequestQueue(profileRequest);
+                }
             }
         });
         spinner.setVisibility(View.GONE);
