@@ -13,7 +13,8 @@ Instrumented test:
 Run the EspressoTest (run configuration) on a live device or an emulator. A deployment dialog will be presented to you,
 where you can choose one of your devices
 
-Voor de EspressoTest (run configuration) uit op een live device of een emulator. Je krijgt de mogelijkheid om te kiezen op
+Instrumented test: 
+Voer de EspressoTest (run configuration) uit op een live device of een emulator. Je krijgt de mogelijkheid om te kiezen op
 welk device je deze testen wilt runnen.
 
 ## Using the application
