@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -38,6 +39,7 @@ public class SearchProfileActivity extends AppCompatActivity {
     //private Toolbar toolbar;
     private EditText editText;
     private Button button;
+    private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class SearchProfileActivity extends AppCompatActivity {
         RequestQueue queue = VolleySingleton.getInstance(this.getApplicationContext()).getRequestQueue();
 
         editText = findViewById(R.id.profileTextInput);
-
+        spinner = findViewById(R.id.progressBar);
         button = findViewById(R.id.profileSearchButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +64,7 @@ public class SearchProfileActivity extends AppCompatActivity {
                 Bundle bundle = applicationInfo.metaData;
                 final String apiKey = bundle.getString("blizzard_api_key");
                 String url = "https://eu.api.battle.net/d3/profile/" + editText.getText() + "/?locale=en_GB&apikey=" + apiKey;
+                spinner.setVisibility(View.VISIBLE);
                 ProfileRequest profileRequest = new ProfileRequest(url,null, new Response.Listener<Profile>() {
                     @Override
                     public void onResponse(Profile response) {
@@ -73,6 +76,7 @@ public class SearchProfileActivity extends AppCompatActivity {
                                 realm.commitTransaction();
                                 Intent intent = new Intent(getBaseContext(), OverviewProfileActivity.class);
                                 intent.putExtra("PROFILE_ID", response.getBattleTag());
+                                spinner.setVisibility(View.GONE);
                                 startActivity(intent);
                             } catch (IllegalStateException e){
                                 Log.e(TAG, "profileRequest onResponse: ", e);
@@ -89,6 +93,7 @@ public class SearchProfileActivity extends AppCompatActivity {
 
                         //Toast toast = Toast.makeText(mContext, error.toString().replaceFirst("com.android.volley.VolleyError: ", ""), Toast.LENGTH_SHORT);
                         //toast.show();
+                        spinner.setVisibility(View.GONE);
                         Snackbar.make(findViewById(R.id.svScrollView), error.toString().replaceFirst("com.android.volley.VolleyError: ", ""), Snackbar.LENGTH_SHORT).show();
                         Log.d(TAG, "onErrorResponse: " + error.toString());
                     }
@@ -96,7 +101,7 @@ public class SearchProfileActivity extends AppCompatActivity {
                 VolleySingleton.getInstance(mContext).addToRequestQueue(profileRequest);
             }
         });
-
+        spinner.setVisibility(View.GONE);
         //toolbar
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar_search_profile);
         setSupportActionBar(toolbar);

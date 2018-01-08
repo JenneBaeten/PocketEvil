@@ -28,7 +28,6 @@ public class ProfileCarreerFragment extends Fragment {
     private static final String ARG_PARAM1 = "profileId";
     private static final String ARG_PARAM2 = "position";
 
-    // TODO: Rename and change types of parameters
     private String profileId;
     private Profile profile;
     private int position;

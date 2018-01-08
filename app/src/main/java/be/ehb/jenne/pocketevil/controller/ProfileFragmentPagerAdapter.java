@@ -32,11 +32,10 @@ public class ProfileFragmentPagerAdapter extends FragmentPagerAdapter{
         Fragment fragment = null;
         switch(position){
             case(0):
-                fragment =  ProfileCarreerFragment.newInstance(profileId, position);
+                fragment = ProfileCarreerFragment.newInstance(profileId, position);
                 break;
             case(1):
-                //todo andere fragment
-                fragment = ProfileCarreerFragment.newInstance(profileId, position);
+                fragment = ProfileHeroFragment.newInstance(profileId, position);
                 break;
         }
         return fragment;
