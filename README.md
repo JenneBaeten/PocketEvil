@@ -40,3 +40,7 @@ Meer profielen kunnen gevonden worden op volgende link: https://eu.battle.net/d3
 * All data and assets are owned by Blizzard and/or their respective creators. A list of every used asset and the original source can be found under AssetSourceList.txt.
 
 * Alle data en afbeeldingen zijn eigendom van Blizzard en/of hun respectievelijke maker. Een lijst van elke gebruikte afbeeldingen en hun afkomst kunnen gevonden worden in AssetSourceList.txt
+
+* Tool for converting images to multiple formats for android: https://www.img-bak.in/
+
+* Tool om afbeeldingen om te zetten naar verschillende formaten voor android: https://www.img-bak.in/
